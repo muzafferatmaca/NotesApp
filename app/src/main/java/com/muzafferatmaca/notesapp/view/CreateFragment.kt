@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.muzafferatmaca.notesapp.R
 import com.muzafferatmaca.notesapp.databinding.FragmentCreateBinding
@@ -46,6 +47,18 @@ class CreateFragment : Fragment() {
     private fun saveNote(){
 
         if (addNoteTitleEditText.text.isNullOrEmpty()){
+
+            Toast.makeText(context,"test",Toast.LENGTH_LONG).show()
+
+        }
+        if (addNoteSubTitleEditText.text.isNullOrEmpty()){
+
+            Toast.makeText(context,"test",Toast.LENGTH_LONG).show()
+
+        }
+        if (addNoteDescEditText.text.isNullOrEmpty()){
+
+            Toast.makeText(context,"test",Toast.LENGTH_LONG).show()
 
         }
 
