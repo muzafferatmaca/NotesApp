@@ -20,6 +20,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        dataBinding true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -34,9 +38,6 @@ android {
         jvmTarget = '1.8'
     }
 
-    dataBinding{
-        enabled = true
-    }
 }
 
 def circleImageView = '3.1.0'
@@ -58,13 +59,19 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation "de.hdodenhof:circleimageview:$circleImageView"
+
     implementation "androidx.room:room-runtime:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
     implementation "androidx.room:room-ktx:$roomVersion"
+
     implementation "com.makeramen:roundedimageview:$roundedImageviewVersion"
+
     implementation "com.theartofdev.edmodo:android-image-cropper:$imageCropVersion"
+
     implementation 'pub.devrel:easypermissions:3.0.0'
+
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
+
     implementation "androidx.navigation:navigation-fragment-ktx:$navVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navVersion"
 
