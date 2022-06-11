@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 /**
  * Created by Muzaffer Atmaca on 11.06.2022.
  */
-@Entity(tableName = "Notes")
+@Entity
 data class Notes(
 
     @ColumnInfo(name = "noteText")
