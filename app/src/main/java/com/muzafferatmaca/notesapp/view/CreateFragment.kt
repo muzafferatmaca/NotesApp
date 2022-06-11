@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.muzafferatmaca.notesapp.R
 import com.muzafferatmaca.notesapp.databinding.FragmentCreateBinding
+import kotlinx.android.synthetic.main.fragment_create.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class CreateFragment : Fragment() {
@@ -29,6 +32,22 @@ class CreateFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val simpleDateFormat = SimpleDateFormat()
+        val currentDate = simpleDateFormat.format(Date())
+
+        dateTimeTextView.text = currentDate
+
+        doneImageView.setOnClickListener {
+             saveNote()
+        }
+    }
+
+    private fun saveNote(){
+
+        if (addNoteTitleEditText.text.isNullOrEmpty()){
+
+        }
 
     }
 }

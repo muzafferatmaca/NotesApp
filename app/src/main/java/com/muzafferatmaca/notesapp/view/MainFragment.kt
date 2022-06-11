@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.muzafferatmaca.notesapp.R
 import com.muzafferatmaca.notesapp.databinding.FragmentMainBinding
+import kotlinx.android.synthetic.main.fragment_create.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class MainFragment : Fragment() {
@@ -32,6 +35,9 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
 
     }
 

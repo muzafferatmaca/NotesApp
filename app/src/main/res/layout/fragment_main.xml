@@ -13,7 +13,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_thin"
+            android:fontFamily="@font/roboto_bold"
             android:text="@string/myNotes"
             android:textColor="@color/white"
             android:textSize="25sp"
