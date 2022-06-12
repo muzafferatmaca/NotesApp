@@ -15,5 +15,9 @@
     <fragment
         android:id="@+id/createFragment"
         android:name="com.muzafferatmaca.notesapp.view.CreateFragment"
-        android:label="CreateFragment" />
+        android:label="CreateFragment" >
+        <action
+            android:id="@+id/action_createFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 </navigation>

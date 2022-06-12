@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import com.muzafferatmaca.notesapp.R
 import com.muzafferatmaca.notesapp.databinding.FragmentCreateBinding
+import com.muzafferatmaca.notesapp.viewmodel.CreateFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_create.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -16,6 +18,9 @@ import java.util.*
 
 class CreateFragment : Fragment() {
 
+    private lateinit var viewModel : CreateFragmentViewModel
+
+    var currentDate :String? = null
     private lateinit var binding : FragmentCreateBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,12 +40,15 @@ class CreateFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val simpleDateFormat = SimpleDateFormat()
-        val currentDate = simpleDateFormat.format(Date())
-
+        currentDate = simpleDateFormat.format(Date())
         dateTimeTextView.text = currentDate
 
         doneImageView.setOnClickListener {
+
+            val action = CreateFragmentDirections.actionCreateFragmentToMainFragment()
+            Navigation.findNavController(view).navigate(action)
              saveNote()
+            viewModel.storeInSQLite()
         }
     }
 
