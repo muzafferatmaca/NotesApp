@@ -21,6 +21,8 @@ class CreateFragmentViewModel (application: Application): BaseViewModel(applicat
 
      fun storeInSQLite(){
 
+         createFragment = CreateFragment()
+
         launch {
 
             notes = Notes()
