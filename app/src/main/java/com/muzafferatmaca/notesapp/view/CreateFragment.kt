@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.muzafferatmaca.notesapp.R
 import com.muzafferatmaca.notesapp.databinding.FragmentCreateBinding
+import com.muzafferatmaca.notesapp.model.Notes
 import com.muzafferatmaca.notesapp.viewmodel.CreateFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_create.*
 import java.text.SimpleDateFormat
@@ -19,10 +20,15 @@ import java.util.*
 
 class CreateFragment : Fragment() {
 
-    private lateinit var viewModel : CreateFragmentViewModel
+    private lateinit var viewModel: CreateFragmentViewModel
+    private val currentDate = SimpleDateFormat.getDateInstance().format(Date())
+    var selectedColor = "#171C26"
+    private var webLink = ""
+    private var noteId = -1
+    private var selectedImagePath = ""
 
-    var currentDate :String? = null
-    private lateinit var binding : FragmentCreateBinding
+
+    private lateinit var binding: FragmentCreateBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -33,7 +39,7 @@ class CreateFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_create,container,false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_create, container, false)
         return binding.root
     }
 
@@ -42,35 +48,47 @@ class CreateFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(CreateFragmentViewModel::class.java)
 
-        val simpleDateFormat = SimpleDateFormat()
-        currentDate = simpleDateFormat.format(Date())
+
         dateTimeTextView.text = currentDate
 
         doneImageView.setOnClickListener {
 
             val action = CreateFragmentDirections.actionCreateFragmentToMainFragment()
             Navigation.findNavController(view).navigate(action)
-             saveNote()
+            saveNote()
         }
     }
 
-    private fun saveNote(){
+    private fun saveNote() {
 
-        if (addNoteTitleEditText.text.isNullOrEmpty()){
+        if (addNoteTitleEditText.text.isNullOrEmpty()) {
 
-            Toast.makeText(context,"test",Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "test", Toast.LENGTH_LONG).show()
 
-        }
-        if (addNoteSubTitleEditText.text.isNullOrEmpty()){
+        } else if (addNoteSubTitleEditText.text.isNullOrEmpty()) {
 
-            Toast.makeText(context,"test",Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "test", Toast.LENGTH_LONG).show()
 
-        }
-        if (addNoteDescEditText.text.isNullOrEmpty()){
+        } else if (addNoteDescEditText.text.isNullOrEmpty()) {
 
-            Toast.makeText(context,"test",Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "test", Toast.LENGTH_LONG).show()
 
+        } else {
+
+            viewModel.saveNote(
+                Notes(
+                    binding.addNoteSubTitleEditText.text.toString(),
+                    binding.addNoteTitleEditText.text.toString(),
+                    binding.addNoteSubTitleEditText.text.toString(),
+                    currentDate,
+                    selectedImagePath,
+                    noteId,
+                    webLink,
+                    selectedColor
+                )
+            )
         }
 
     }
+
 }

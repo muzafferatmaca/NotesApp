@@ -11,7 +11,7 @@ import com.muzafferatmaca.notesapp.model.Notes
 interface NoteDao {
 
     @Query("SELECT * FROM notes ORDER BY id DESC")
-   suspend fun  getAllNote (): LiveData<List<Notes>>
+   suspend fun  getAllNote (): List<Notes>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNote(note: Notes)

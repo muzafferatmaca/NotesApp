@@ -44,8 +44,8 @@ class MainFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(MainFragmentViewModel::class.java)
 
-        recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+        // recyclerView.setHasFixedSize(true)
+        // recyclerView.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
 
 
 

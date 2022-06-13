@@ -19,7 +19,6 @@ import kotlinx.coroutines.launch
 class CreateFragmentViewModel (application: Application,private val noteRepository: NoteRepository): BaseViewModel(application) {
 
 
-
     fun saveNote(newNotes: Notes) = viewModelScope.launch(Dispatchers.IO){
         noteRepository.addNote(newNotes)
     }
@@ -28,7 +27,7 @@ class CreateFragmentViewModel (application: Application,private val noteReposito
         noteRepository.deleteNote(existingNotes)
     }
 
-    suspend fun getAllNote():LiveData<List<Notes>> = noteRepository.getNote()
+    suspend fun getAllNote():List<Notes> = noteRepository.getNote()
 
 
 }
