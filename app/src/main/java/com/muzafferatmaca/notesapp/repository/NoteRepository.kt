@@ -8,6 +8,8 @@ import com.muzafferatmaca.notesapp.model.Notes
  */
 class NoteRepository(private val database: NoteDatabase) {
 
+
+
     suspend fun getNote() =
         database.noteDao().getAllNote()
 

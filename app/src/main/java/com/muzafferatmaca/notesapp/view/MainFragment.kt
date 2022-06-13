@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.muzafferatmaca.notesapp.R
+import com.muzafferatmaca.notesapp.adapter.NotesAdapter
 import com.muzafferatmaca.notesapp.databinding.FragmentMainBinding
 import com.muzafferatmaca.notesapp.viewmodel.MainFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_create.*
@@ -21,7 +22,8 @@ import java.util.*
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
-    private lateinit var viewModel : MainFragmentViewModel
+    private lateinit var viewModel: MainFragmentViewModel
+    private val notesAdapter = NotesAdapter(arrayListOf())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,9 +46,11 @@ class MainFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(MainFragmentViewModel::class.java)
 
-        // recyclerView.setHasFixedSize(true)
-        // recyclerView.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager =
+            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
+        recyclerView.adapter = notesAdapter.
 
 
         fabButton.setOnClickListener {
@@ -55,6 +59,11 @@ class MainFragment : Fragment() {
         }
 
 
+    }
+
+    fun showNotes(){
+
+        viewModel.getAllNotesDatabase()
 
     }
 

@@ -11,7 +11,7 @@ import com.muzafferatmaca.notesapp.model.Notes
 /**
  * Created by Muzaffer Atmaca on 13.06.2022.
  */
-class NotesAdapter(val noteslist: ArrayList<Notes>) : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
+class NotesAdapter(val noteslist: List<Notes>) : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
 
 
 
