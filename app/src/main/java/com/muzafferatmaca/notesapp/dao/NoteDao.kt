@@ -1,5 +1,6 @@
 package com.muzafferatmaca.notesapp.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.muzafferatmaca.notesapp.model.Notes
 
@@ -10,7 +11,7 @@ import com.muzafferatmaca.notesapp.model.Notes
 interface NoteDao {
 
     @get:Query("SELECT * FROM notes ORDER BY id DESC")
-    val allNote : List<Notes>
+    val allNote : LiveData<List<Notes>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertNote(note: Notes)
