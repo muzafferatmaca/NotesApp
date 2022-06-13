@@ -28,7 +28,7 @@ class CreateFragmentViewModel (application: Application,private val noteReposito
         noteRepository.deleteNote(existingNotes)
     }
 
-    fun getAllNote():LiveData<List<Notes>> = noteRepository.getNote()
+    suspend fun getAllNote():LiveData<List<Notes>> = noteRepository.getNote()
 
 
 }

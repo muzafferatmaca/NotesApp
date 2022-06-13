@@ -51,7 +51,6 @@ class CreateFragment : Fragment() {
             val action = CreateFragmentDirections.actionCreateFragmentToMainFragment()
             Navigation.findNavController(view).navigate(action)
              saveNote()
-            viewModel.storeInSQLite()
         }
     }
 
