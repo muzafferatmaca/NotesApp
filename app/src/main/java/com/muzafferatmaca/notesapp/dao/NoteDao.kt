@@ -10,14 +10,14 @@ import com.muzafferatmaca.notesapp.model.Notes
 @Dao
 interface NoteDao {
 
-    @get:Query("SELECT * FROM notes ORDER BY id DESC")
-    val allNote : LiveData<List<Notes>>
+    @Query("SELECT * FROM notes ORDER BY id DESC")
+   suspend fun  getAllNote (): LiveData<List<Notes>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertNote(note: Notes)
+    suspend fun insertNote(note: Notes)
 
     @Delete
-    fun deleteNote(note: Notes)
+    suspend fun deleteNote(note: Notes)
 
 
 }

@@ -8,8 +8,8 @@ import com.muzafferatmaca.notesapp.model.Notes
  */
 class NoteRepository(private val database: NoteDatabase) {
 
-    fun getNote() =
-        database.noteDao().allNote
+    suspend fun getNote() =
+        database.noteDao().getAllNote()
 
     suspend fun addNote(note : Notes) =
         database.noteDao().insertNote(note)
