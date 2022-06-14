@@ -21,11 +21,11 @@ import java.util.*
 class CreateFragment : Fragment() {
 
     private lateinit var viewModel: CreateFragmentViewModel
+    private var notes: Notes? = null
     private val currentDate = SimpleDateFormat.getDateInstance().format(Date())
     var selectedColor = "#171C26"
     private var webLink = ""
     private var selectedImagePath = ""
-    private var notes: Notes? = null
 
 
     private lateinit var binding: FragmentCreateBinding
@@ -74,7 +74,6 @@ class CreateFragment : Fragment() {
             Toast.makeText(context, "test", Toast.LENGTH_LONG).show()
 
         } else {
-            if (notes != null) {
 
                 viewModel.saveNote(
                     Notes(
@@ -88,7 +87,7 @@ class CreateFragment : Fragment() {
                     )
                 )
 
-            }
+
 
             /*
               val descTitle =binding.addNoteDescEditText.text.toString()

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.muzafferatmaca.notesapp.R
 import com.muzafferatmaca.notesapp.databinding.ItemNoteBinding
 import com.muzafferatmaca.notesapp.model.Notes
+import com.muzafferatmaca.notesapp.viewmodel.CreateFragmentViewModel
 
 /**
  * Created by Muzaffer Atmaca on 13.06.2022.

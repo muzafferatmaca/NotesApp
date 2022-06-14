@@ -32,7 +32,7 @@ class Notes(
     @ColumnInfo(name = "color")
     var color: String,
 
-){
+):Serializable{
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null
 }
