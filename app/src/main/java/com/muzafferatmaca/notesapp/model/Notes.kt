@@ -8,7 +8,7 @@ import java.io.Serializable
 /**
  * Created by Muzaffer Atmaca on 11.06.2022.
  */
-@Entity(tableName = "Notes")
+@Entity(tableName = "notes")
 class Notes(
 
     @ColumnInfo(name = "noteText")
@@ -26,13 +26,13 @@ class Notes(
     @ColumnInfo(name = "imgPath")
     var imgPath: String,
 
-    @PrimaryKey(autoGenerate = true)
-    var id: Int,
-
     @ColumnInfo(name = "webLink")
     var webLink: String,
 
     @ColumnInfo(name = "color")
     var color: String,
 
-):Serializable
+){
+    @PrimaryKey(autoGenerate = true)
+    var id: Int? = null
+}

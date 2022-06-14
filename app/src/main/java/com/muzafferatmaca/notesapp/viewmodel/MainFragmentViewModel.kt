@@ -3,6 +3,8 @@ package com.muzafferatmaca.notesapp.viewmodel
 import android.app.Application
 import androidx.lifecycle.viewModelScope
 import com.muzafferatmaca.notesapp.database.NoteDatabase
+import com.muzafferatmaca.notesapp.model.Notes
+import com.muzafferatmaca.notesapp.repository.NoteRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -11,13 +13,11 @@ import kotlinx.coroutines.launch
  */
 class MainFragmentViewModel(application: Application) : BaseViewModel(application) {
 
+    private val noteDatabase = NoteDatabase(getApplication())
+    private val noteRepository = NoteRepository(noteDatabase)
 
+    suspend fun getAllNote():List<Notes> = noteRepository.getNote()
 
-    fun getAllNotesDatabase() = viewModelScope.launch(Dispatchers.IO){
-        val notes = NoteDatabase.invoke(getApplication()).noteDao().getAllNote()
-
-
-    }
 
 
 }

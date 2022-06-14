@@ -23,9 +23,7 @@ abstract class NoteDatabase: RoomDatabase() {
 
         operator fun invoke(context: Context) = noteDatabaseInstance ?: synchronized(lock){
 
-            noteDatabaseInstance ?: makeDatabase(context).also {
-                noteDatabaseInstance = it
-            }
+            noteDatabaseInstance ?: makeDatabase(context).also { noteDatabaseInstance = it}
 
         }
 

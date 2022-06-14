@@ -24,9 +24,8 @@ class CreateFragment : Fragment() {
     private val currentDate = SimpleDateFormat.getDateInstance().format(Date())
     var selectedColor = "#171C26"
     private var webLink = ""
-    private var noteId = -1
     private var selectedImagePath = ""
-    private lateinit var notes: Notes
+    private var notes: Notes? = null
 
 
     private lateinit var binding: FragmentCreateBinding
@@ -48,6 +47,7 @@ class CreateFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(CreateFragmentViewModel::class.java)
+
 
         dateTimeTextView.text = currentDate
 
@@ -74,13 +74,31 @@ class CreateFragment : Fragment() {
             Toast.makeText(context, "test", Toast.LENGTH_LONG).show()
 
         } else {
+            if (notes != null) {
 
-            val descTitle =binding.addNoteDescEditText.text.toString()
-            val noteTitle =binding.addNoteTitleEditText.text.toString()
-            val subTitle =binding.addNoteSubTitleEditText.text.toString()
-            notes = Notes(descTitle,noteTitle ,subTitle,currentDate,selectedImagePath,noteId,webLink,selectedColor)
+                viewModel.saveNote(
+                    Notes(
+                        binding.addNoteDescEditText.text.toString(),
+                        binding.addNoteTitleEditText.text.toString(),
+                        binding.addNoteSubTitleEditText.text.toString(),
+                        currentDate,
+                        selectedImagePath,
+                        webLink,
+                        selectedColor
+                    )
+                )
 
-            viewModel.saveNote(notes)
+            }
+
+            /*
+              val descTitle =binding.addNoteDescEditText.text.toString()
+                val noteTitle =binding.addNoteTitleEditText.text.toString()
+                val subTitle =binding.addNoteSubTitleEditText.text.toString()
+                notes = Notes(descTitle,noteTitle ,subTitle,currentDate,selectedImagePath,0,webLink,selectedColor)
+
+                viewModel.saveNote(notes)
+             */
+
 
         }
 

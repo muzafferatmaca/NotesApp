@@ -70,14 +70,16 @@ class MainFragment : Fragment() {
 
     private fun setUpRecyclerView(spanCount: Int) {
 
-        recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager =
-            StaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL)
-        notesAdapter = NotesAdapter(arrayListOf())
-        recyclerView.adapter = NotesAdapter(notesList)
+        binding.recyclerView.apply {
+            layoutManager = StaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL)
+            setHasFixedSize(true)
+            notesAdapter = NotesAdapter(arrayListOf())
+            adapter = notesAdapter
 
+        }
 
     }
+
 
 
 }

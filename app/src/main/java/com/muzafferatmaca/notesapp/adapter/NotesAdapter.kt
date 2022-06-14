@@ -32,7 +32,5 @@ class NotesAdapter(val noteslist: List<Notes>) : RecyclerView.Adapter<NotesAdapt
 
     }
 
-    override fun getItemCount(): Int {
-       return noteslist.size
-    }
+    override fun getItemCount(): Int = noteslist.size
 }
