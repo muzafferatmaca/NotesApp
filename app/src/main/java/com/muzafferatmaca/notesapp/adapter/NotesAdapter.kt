@@ -12,7 +12,7 @@ import com.muzafferatmaca.notesapp.viewmodel.CreateFragmentViewModel
 /**
  * Created by Muzaffer Atmaca on 13.06.2022.
  */
-class NotesAdapter(val noteslist: List<Notes>) : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
+class NotesAdapter(var noteslist: List<Notes>) : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
 
 
 
@@ -29,7 +29,6 @@ class NotesAdapter(val noteslist: List<Notes>) : RecyclerView.Adapter<NotesAdapt
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.itemNoteBinding.notes = noteslist[position]
-
 
     }
 

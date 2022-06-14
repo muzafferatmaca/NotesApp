@@ -21,7 +21,6 @@ import java.util.*
 class CreateFragment : Fragment() {
 
     private lateinit var viewModel: CreateFragmentViewModel
-    private var notes: Notes? = null
     private val currentDate = SimpleDateFormat.getDateInstance().format(Date())
     var selectedColor = "#171C26"
     private var webLink = ""
@@ -75,30 +74,17 @@ class CreateFragment : Fragment() {
 
         } else {
 
-                viewModel.saveNote(
-                    Notes(
-                        binding.addNoteDescEditText.text.toString(),
-                        binding.addNoteTitleEditText.text.toString(),
-                        binding.addNoteSubTitleEditText.text.toString(),
-                        currentDate,
-                        selectedImagePath,
-                        webLink,
-                        selectedColor
-                    )
+            viewModel.saveNote(
+                Notes(
+                    binding.addNoteDescEditText.text.toString(),
+                    binding.addNoteTitleEditText.text.toString(),
+                    binding.addNoteSubTitleEditText.text.toString(),
+                    currentDate,
+                    selectedImagePath,
+                    webLink,
+                    selectedColor
                 )
-
-
-
-            /*
-              val descTitle =binding.addNoteDescEditText.text.toString()
-                val noteTitle =binding.addNoteTitleEditText.text.toString()
-                val subTitle =binding.addNoteSubTitleEditText.text.toString()
-                notes = Notes(descTitle,noteTitle ,subTitle,currentDate,selectedImagePath,0,webLink,selectedColor)
-
-                viewModel.saveNote(notes)
-             */
-
-
+            )
         }
 
     }

@@ -14,12 +14,10 @@ import kotlinx.coroutines.launch
  */
 class MainFragmentViewModel(application: Application) : BaseViewModel(application) {
 
-    /* private val noteDatabase = NoteDatabase(getApplication())
+    private val noteDatabase = NoteDatabase(getApplication())
     private val noteRepository = NoteRepository(noteDatabase)
 
     fun getAllNote(): LiveData<List<Notes>> = noteRepository.getNote()
-
-     */
 
 
 
