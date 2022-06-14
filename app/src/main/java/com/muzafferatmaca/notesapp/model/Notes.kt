@@ -8,7 +8,7 @@ import java.io.Serializable
 /**
  * Created by Muzaffer Atmaca on 11.06.2022.
  */
-@Entity
+@Entity(tableName = "Notes")
 class Notes(
 
     @ColumnInfo(name = "noteText")

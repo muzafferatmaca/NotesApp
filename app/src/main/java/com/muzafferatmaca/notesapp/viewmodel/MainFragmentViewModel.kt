@@ -16,6 +16,7 @@ class MainFragmentViewModel(application: Application) : BaseViewModel(applicatio
     fun getAllNotesDatabase() = viewModelScope.launch(Dispatchers.IO){
         val notes = NoteDatabase.invoke(getApplication()).noteDao().getAllNote()
 
+
     }
 
 

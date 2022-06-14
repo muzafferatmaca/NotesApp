@@ -26,6 +26,7 @@ class CreateFragment : Fragment() {
     private var webLink = ""
     private var noteId = -1
     private var selectedImagePath = ""
+    private lateinit var notes: Notes
 
 
     private lateinit var binding: FragmentCreateBinding
@@ -47,7 +48,6 @@ class CreateFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(CreateFragmentViewModel::class.java)
-
 
         dateTimeTextView.text = currentDate
 
@@ -75,21 +75,14 @@ class CreateFragment : Fragment() {
 
         } else {
 
-            viewModel.saveNote(
-                Notes(
-                    binding.addNoteSubTitleEditText.text.toString(),
-                    binding.addNoteTitleEditText.text.toString(),
-                    binding.addNoteSubTitleEditText.text.toString(),
-                    currentDate,
-                    selectedImagePath,
-                    noteId,
-                    webLink,
-                    selectedColor
-                )
-            )
+            val descTitle =binding.addNoteDescEditText.text.toString()
+            val noteTitle =binding.addNoteTitleEditText.text.toString()
+            val subTitle =binding.addNoteSubTitleEditText.text.toString()
+            notes = Notes(descTitle,noteTitle ,subTitle,currentDate,selectedImagePath,noteId,webLink,selectedColor)
+
+            viewModel.saveNote(notes)
+
         }
-
-
 
     }
 

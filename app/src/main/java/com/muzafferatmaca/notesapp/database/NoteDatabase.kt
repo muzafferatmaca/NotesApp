@@ -10,15 +10,15 @@ import com.muzafferatmaca.notesapp.model.Notes
 /**
  * Created by Muzaffer Atmaca on 11.06.2022.
  */
-@Database(entities = [Notes::class],version = 1)
+@Database(entities = [Notes::class],version = 1,exportSchema = false)
 abstract class NoteDatabase: RoomDatabase() {
 
     abstract fun noteDao() : NoteDao
 
     companion object {
 
-     @Volatile private var noteDatabaseInstance : NoteDatabase? = null
-
+        @Volatile
+        private var noteDatabaseInstance : NoteDatabase? = null
         private val lock = Any()
 
         operator fun invoke(context: Context) = noteDatabaseInstance ?: synchronized(lock){
@@ -30,7 +30,7 @@ abstract class NoteDatabase: RoomDatabase() {
         }
 
         private fun makeDatabase(context: Context) = Room.databaseBuilder(
-            context.applicationContext,NoteDatabase::class.java,"notedatabase").build()
+            context.applicationContext,NoteDatabase::class.java,"note_database").build()
 
 
     }

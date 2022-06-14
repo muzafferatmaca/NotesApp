@@ -18,17 +18,18 @@ import kotlinx.coroutines.launch
  */
 class CreateFragmentViewModel (application: Application): BaseViewModel(application) {
 
-    private val noteRepository : NoteRepository? = null
+    private val noteDatabase = NoteDatabase(getApplication())
+    private val noteRepository = NoteRepository(noteDatabase)
 
-    fun saveNote(newNotes: Notes) = viewModelScope.launch(Dispatchers.IO){
-        noteRepository?.addNote(newNotes)
+    fun saveNote(newNotes: Notes) = viewModelScope.launch(Dispatchers.Main){
+        noteRepository.addNote(newNotes)
     }
 
     fun deleteNote(existingNotes: Notes) = viewModelScope.launch(Dispatchers.IO){
-        noteRepository?.deleteNote(existingNotes)
+        noteRepository.deleteNote(existingNotes)
     }
 
-    suspend fun getAllNote():List<Notes> = noteRepository!!.getNote()
+    suspend fun getAllNote():List<Notes> = noteRepository.getNote()
 
 
 }

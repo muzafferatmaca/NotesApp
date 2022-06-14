@@ -1,5 +1,7 @@
 package com.muzafferatmaca.notesapp.view
 
+import android.annotation.SuppressLint
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.muzafferatmaca.notesapp.R
 import com.muzafferatmaca.notesapp.adapter.NotesAdapter
 import com.muzafferatmaca.notesapp.databinding.FragmentMainBinding
+import com.muzafferatmaca.notesapp.model.Notes
 import com.muzafferatmaca.notesapp.viewmodel.MainFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_create.*
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -23,7 +26,9 @@ class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
     private lateinit var viewModel: MainFragmentViewModel
-    private val notesAdapter = NotesAdapter(arrayListOf())
+    private var notesAdapter = NotesAdapter(arrayListOf())
+    var notesList = ArrayList<Notes>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,13 +51,7 @@ class MainFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(MainFragmentViewModel::class.java)
 
-        recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager =
-            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-
-        recyclerView.adapter = notesAdapter.
-
-
+        recyclerViewDisplay()
         fabButton.setOnClickListener {
             val action = MainFragmentDirections.actionMainFragmentToCreateFragment()
             Navigation.findNavController(view).navigate(action)
@@ -61,9 +60,22 @@ class MainFragment : Fragment() {
 
     }
 
-    fun showNotes(){
+    private fun recyclerViewDisplay() {
+        @SuppressLint("SwitchIntDef")
+        when (resources.configuration.orientation) {
+            Configuration.ORIENTATION_PORTRAIT -> setUpRecyclerView(2)
+            Configuration.ORIENTATION_LANDSCAPE -> setUpRecyclerView(3)
+        }
+    }
 
-        viewModel.getAllNotesDatabase()
+    private fun setUpRecyclerView(spanCount: Int) {
+
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager =
+            StaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL)
+        notesAdapter = NotesAdapter(arrayListOf())
+        recyclerView.adapter = NotesAdapter(notesList)
+
 
     }
 
