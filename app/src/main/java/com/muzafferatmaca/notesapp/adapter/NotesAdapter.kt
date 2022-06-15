@@ -1,5 +1,6 @@
 package com.muzafferatmaca.notesapp.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -29,6 +30,15 @@ class NotesAdapter(var noteslist: List<Notes>) : RecyclerView.Adapter<NotesAdapt
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.itemNoteBinding.notes = noteslist[position]
+
+        if (noteslist[position].color != null){
+
+            holder.itemNoteBinding.cardView.setCardBackgroundColor(Color.parseColor(noteslist[position].color))
+
+        }else{
+            holder.itemNoteBinding.cardView.setCardBackgroundColor(Color.parseColor(R.color.black.toString()))
+
+        }
 
     }
 
