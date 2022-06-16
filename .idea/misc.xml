@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/bottom_sheet_view.xml" value="0.2149122807017544" />
         <entry key="app/src/main/res/drawable/iback.xml" value="0.2149122807017544" />
+        <entry key="app/src/main/res/drawable/ic_delete.xml" value="0.2149122807017544" />
         <entry key="app/src/main/res/drawable/note_color_2.xml" value="0.2149122807017544" />
         <entry key="app/src/main/res/drawable/note_color_3.xml" value="0.2149122807017544" />
         <entry key="app/src/main/res/drawable/note_color_4.xml" value="0.2149122807017544" />

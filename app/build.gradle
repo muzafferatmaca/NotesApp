@@ -75,4 +75,7 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$navVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navVersion"
 
+    implementation 'pub.devrel:easypermissions:3.0.0'
+
+
 }

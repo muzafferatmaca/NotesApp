@@ -21,11 +21,12 @@ import com.muzafferatmaca.notesapp.model.Notes
 import com.muzafferatmaca.notesapp.util.NoteBottomSheetFragment
 import com.muzafferatmaca.notesapp.viewmodel.CreateFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_create.*
+import pub.devrel.easypermissions.EasyPermissions
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-class CreateFragment : Fragment() {
+class CreateFragment : Fragment(), EasyPermissions.PermissionCallbacks,EasyPermissions.RationaleCallbacks {
 
     private lateinit var viewModel: CreateFragmentViewModel
     private val currentDate = SimpleDateFormat.getDateInstance().format(Date())
@@ -33,6 +34,8 @@ class CreateFragment : Fragment() {
     private var webLink = ""
     private var selectedImagePath = ""
     private var noteId = -1
+    private var READ_STORAGE_PERM = 100
+    private var REQUEST_CODE_IMAGE = 200
 
 
     private lateinit var binding: FragmentCreateBinding
@@ -62,7 +65,7 @@ class CreateFragment : Fragment() {
         colorView.setBackgroundColor(Color.parseColor(selectedColor))
         setDoneImageView()
         setBackImageView()
-        setClickMoreImageView()
+       // setClickMoreImageView()
         setMoreImageView()
 
     }
@@ -131,9 +134,11 @@ class CreateFragment : Fragment() {
 
     private fun setMoreImageView() {
 
-        var noteBottomSheetFragment = NoteBottomSheetFragment.newInstance(noteId)
-        noteBottomSheetFragment.show(requireActivity().supportFragmentManager, "Note Bottom Sheet Fragment"
-        )
+        noteMore.setOnClickListener {
+            var noteBottomSheetFragment = NoteBottomSheetFragment.newInstance(noteId)
+            noteBottomSheetFragment.show(requireActivity().supportFragmentManager, "Note Bottom Sheet Fragment"
+            )
+        }
 
     }
 
@@ -196,6 +201,22 @@ class CreateFragment : Fragment() {
       LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(broadCastReceiver)
         super.onDestroy()
 
+    }
+
+    override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onRationaleAccepted(requestCode: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onRationaleDenied(requestCode: Int) {
+        TODO("Not yet implemented")
     }
 
 }

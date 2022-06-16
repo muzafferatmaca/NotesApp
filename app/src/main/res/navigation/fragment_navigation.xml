@@ -19,5 +19,12 @@
         <action
             android:id="@+id/action_createFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_createFragment_to_noteBottomSheetFragment3"
+            app:destination="@id/noteBottomSheetFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/noteBottomSheetFragment"
+        android:name="com.muzafferatmaca.notesapp.util.NoteBottomSheetFragment"
+        android:label="NoteBottomSheetFragment" />
 </navigation>
