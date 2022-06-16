@@ -140,7 +140,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/appBackgroundColor"
             android:orientation="vertical"
             android:padding="10dp"
             android:visibility="gone"
@@ -190,8 +190,8 @@
                 <Button
                     android:id="@+id/btnCancel"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:background="@color/colorAccent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/appBackgroundColor"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/cancel"
                     android:textAllCaps="false"
@@ -201,7 +201,7 @@
                 <Button
                     android:id="@+id/btnOk"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:background="@color/colorAccent"
                     android:fontFamily="@font/roboto_bold"
@@ -248,7 +248,7 @@
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/line1" />
+            app:layout_constraintTop_toBottomOf="@id/lineWebUrl" />
 
         <FrameLayout
             android:layout_width="match_parent"

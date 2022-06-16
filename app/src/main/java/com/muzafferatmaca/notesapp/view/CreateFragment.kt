@@ -189,7 +189,7 @@ class CreateFragment : Fragment(), EasyPermissions.PermissionCallbacks,EasyPermi
     }
     private fun checkWebUrl(){
         if (Patterns.WEB_URL.matcher(etWebLink.text.toString()).matches()){
-            layoutWebUrl.visibility = View.GONE
+            lineWebUrl.visibility = View.GONE
             etWebLink.isEnabled = false
             webLink = etWebLink.text.toString()
             tvWebLink.visibility = View.VISIBLE
@@ -249,7 +249,7 @@ class CreateFragment : Fragment(), EasyPermissions.PermissionCallbacks,EasyPermi
 
                 "Image" ->{
                     readStorageTask()
-                    layoutWebUrl.visibility = View.GONE
+                    layoutUrl.visibility = View.GONE
                 }
 
                 "WebUrl" ->{
@@ -262,7 +262,7 @@ class CreateFragment : Fragment(), EasyPermissions.PermissionCallbacks,EasyPermi
                 else -> {
                     layoutImag.visibility = View.GONE
                     imgNote.visibility = View.GONE
-                    layoutWebUrl.visibility = View.GONE
+                    lineWebUrl.visibility = View.GONE
                     selectedColor = intent.getStringExtra("selectedColor")!!
                     colorView.setBackgroundColor(Color.parseColor(selectedColor))
 
