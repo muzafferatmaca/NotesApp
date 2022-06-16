@@ -56,7 +56,7 @@
                 android:textColor="@color/white"/>
 
             <TextView
-                android:id="@+id/tvWebLink"
+                android:id="@+id/webLink"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"

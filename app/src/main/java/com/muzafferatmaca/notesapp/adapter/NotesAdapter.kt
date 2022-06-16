@@ -11,7 +11,9 @@ import com.muzafferatmaca.notesapp.R
 import com.muzafferatmaca.notesapp.databinding.ItemNoteBinding
 import com.muzafferatmaca.notesapp.model.Notes
 import com.muzafferatmaca.notesapp.viewmodel.CreateFragmentViewModel
+import kotlinx.android.synthetic.main.fragment_create.view.*
 import kotlinx.android.synthetic.main.item_note.view.*
+import kotlinx.android.synthetic.main.item_note.view.imgNote
 
 /**
  * Created by Muzaffer Atmaca on 13.06.2022.
@@ -45,6 +47,13 @@ class NotesAdapter(var noteslist: List<Notes>) : RecyclerView.Adapter<NotesAdapt
             holder.itemView.imgNote.visibility = View.VISIBLE
         }else{
             holder.itemView.imgNote.visibility = View.GONE
+        }
+
+        if (noteslist[position].webLink != ""){
+            holder.itemView.webLink.text = noteslist[position].webLink
+            holder.itemView.webLink.visibility = View.VISIBLE
+        }else{
+            holder.itemView.webLink.visibility = View.GONE
         }
 
     }

@@ -27,8 +27,10 @@ import com.muzafferatmaca.notesapp.model.Notes
 import com.muzafferatmaca.notesapp.util.NoteBottomSheetFragment
 import com.muzafferatmaca.notesapp.viewmodel.CreateFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_create.*
+import kotlinx.android.synthetic.main.fragment_create.imgNote
 import kotlinx.android.synthetic.main.fragment_create.noteMore
 import kotlinx.android.synthetic.main.fragment_note_bottom.*
+import kotlinx.android.synthetic.main.item_note.*
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 import java.text.SimpleDateFormat
@@ -77,6 +79,7 @@ class CreateFragment : Fragment(), EasyPermissions.PermissionCallbacks,EasyPermi
        // setClickMoreImageView()
         setMoreImageView()
         buttonSetClick()
+        setTvWebLink()
 
     }
 
@@ -168,11 +171,21 @@ class CreateFragment : Fragment(), EasyPermissions.PermissionCallbacks,EasyPermi
 
             if (noteId != -1){
                 tvWebLink.visibility = View.VISIBLE
-                layoutWebUrl.visibility = View.GONE
+                lineWebUrl.visibility = View.GONE
             }else{
-                layoutWebUrl.visibility = View.GONE
+                lineWebUrl.visibility = View.GONE
             }
         }
+    }
+
+    private fun setTvWebLink(){
+
+        tvWebLink.setOnClickListener {
+            var intent = Intent(Intent.ACTION_VIEW,Uri.parse(etWebLink.text.toString()))
+            startActivity(intent)
+        }
+
+
     }
     private fun checkWebUrl(){
         if (Patterns.WEB_URL.matcher(etWebLink.text.toString()).matches()){
@@ -240,7 +253,7 @@ class CreateFragment : Fragment(), EasyPermissions.PermissionCallbacks,EasyPermi
                 }
 
                 "WebUrl" ->{
-                    layoutWebUrl.visibility = View.VISIBLE
+                    lineWebUrl.visibility = View.VISIBLE
                 }
                 "DeleteNote" -> {
                     //delete note
