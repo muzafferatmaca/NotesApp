@@ -135,6 +135,85 @@
 
         </RelativeLayout>
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layoutWebUrl"
+            android:background="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:layout_margin="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutImage"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/etWebLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:fontFamily="@font/roboto_thin"
+                    android:hint="@string/web_url"
+                    android:inputType="textMultiLine"
+                    android:padding="10dp"
+                    android:text="http://"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/textHintColor"
+                    android:textSize="12sp" />
+                <ImageView
+                    android:id="@+id/imgUrlDelete"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_baseline_cancel_24" />
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="10dp"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:background="@color/colorAccent"
+                    android:text="@string/cancel"
+                    android:textSize="12sp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:id="@+id/btnCancel"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:background="@color/colorAccent"
+                    android:text="@string/ok"
+                    android:textAllCaps="false"
+                    android:textSize="12sp"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/white"
+                    android:id="@+id/btnOk"/>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
         <EditText
             android:id="@+id/addNoteDescEditText"
             android:layout_width="match_parent"

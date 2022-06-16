@@ -8,5 +8,9 @@
     <string name="date">Date</string>
     <string name="addImage">Add Image</string>
     <string name="pickColor">Pick Color</string>
+    <string name="storage_permission_text">This app needs access to your storage.</string>
+    <string name="web_url">Enter Url</string>
+    <string name="cancel">cancel</string>
+    <string name="ok">Ok</string>
 
 </resources>
