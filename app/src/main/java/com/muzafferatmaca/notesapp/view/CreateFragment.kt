@@ -55,13 +55,14 @@ class CreateFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(CreateFragmentViewModel::class.java)
 
         LocalBroadcastManager.getInstance(requireContext()).registerReceiver(
-            BroadcastReceiver, IntentFilter("bottom_sheet_action")
+            broadCastReceiver, IntentFilter("bottom_sheet_action")
         )
 
         dateTimeTextView.text = currentDate
         colorView.setBackgroundColor(Color.parseColor(selectedColor))
         setDoneImageView()
         setBackImageView()
+        setClickMoreImageView()
         setMoreImageView()
 
     }
@@ -122,17 +123,21 @@ class CreateFragment : Fragment() {
 
     }
 
+    private fun setClickMoreImageView(){
+        noteMore.setOnClickListener {
+            requireActivity().supportFragmentManager.popBackStack()
+        }
+    }
+
     private fun setMoreImageView() {
 
         var noteBottomSheetFragment = NoteBottomSheetFragment.newInstance(noteId)
-        noteBottomSheetFragment.show(
-            requireActivity().supportFragmentManager,
-            "Note Bottom Sheet Fragment"
+        noteBottomSheetFragment.show(requireActivity().supportFragmentManager, "Note Bottom Sheet Fragment"
         )
 
     }
 
-    private val BroadcastReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+    private val broadCastReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
 
             var actionColor = intent!!.getStringExtra("action")
@@ -188,7 +193,7 @@ class CreateFragment : Fragment() {
 
     override fun onDestroy() {
 
-      LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(BroadcastReceiver)
+      LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(broadCastReceiver)
         super.onDestroy()
 
     }
