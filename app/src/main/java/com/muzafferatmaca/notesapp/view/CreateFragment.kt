@@ -11,6 +11,7 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,8 @@ import com.muzafferatmaca.notesapp.model.Notes
 import com.muzafferatmaca.notesapp.util.NoteBottomSheetFragment
 import com.muzafferatmaca.notesapp.viewmodel.CreateFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_create.*
+import kotlinx.android.synthetic.main.fragment_create.noteMore
+import kotlinx.android.synthetic.main.fragment_note_bottom.*
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 import java.text.SimpleDateFormat
@@ -73,6 +76,7 @@ class CreateFragment : Fragment(), EasyPermissions.PermissionCallbacks,EasyPermi
         setBackImageView()
        // setClickMoreImageView()
         setMoreImageView()
+        buttonSetClick()
 
     }
 
@@ -150,6 +154,38 @@ class CreateFragment : Fragment(), EasyPermissions.PermissionCallbacks,EasyPermi
 
     }
 
+    private fun buttonSetClick(){
+
+        btnOk.setOnClickListener {
+            if (etWebLink.text.toString().trim().isNotEmpty()){
+                checkWebUrl()
+            }else{
+                Toast.makeText(requireContext(),"Url is Required",Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        btnCancel.setOnClickListener {
+
+            if (noteId != -1){
+                tvWebLink.visibility = View.VISIBLE
+                layoutWebUrl.visibility = View.GONE
+            }else{
+                layoutWebUrl.visibility = View.GONE
+            }
+        }
+    }
+    private fun checkWebUrl(){
+        if (Patterns.WEB_URL.matcher(etWebLink.text.toString()).matches()){
+            layoutWebUrl.visibility = View.GONE
+            etWebLink.isEnabled = false
+            webLink = etWebLink.text.toString()
+            tvWebLink.visibility = View.VISIBLE
+            tvWebLink.text = etWebLink.text.toString()
+        }else{
+            Toast.makeText(requireContext(),"Url is not valid",Toast.LENGTH_SHORT).show()
+        }
+    }
+
     private val broadCastReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
 
@@ -211,7 +247,7 @@ class CreateFragment : Fragment(), EasyPermissions.PermissionCallbacks,EasyPermi
                 }
 
                 else -> {
-                    layoutImage.visibility = View.GONE
+                    layoutImag.visibility = View.GONE
                     imgNote.visibility = View.GONE
                     layoutWebUrl.visibility = View.GONE
                     selectedColor = intent.getStringExtra("selectedColor")!!
@@ -282,7 +318,7 @@ class CreateFragment : Fragment(), EasyPermissions.PermissionCallbacks,EasyPermi
                         var bitmap = BitmapFactory.decodeStream(inputStream)
                         imgNote.setImageBitmap(bitmap)
                         imgNote.visibility = View.VISIBLE
-                        layoutImage.visibility = View.VISIBLE
+                        layoutImag.visibility = View.VISIBLE
 
                         selectedImagePath = getPathFromUri(selectedImageUrl)!!
                     }catch (e:Exception){

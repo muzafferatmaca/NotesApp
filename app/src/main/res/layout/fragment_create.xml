@@ -80,10 +80,10 @@
             app:layout_constraintTop_toBottomOf="@id/dateTimeTextView">
 
             <View
+                android:id="@+id/colorView"
                 android:layout_width="5dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="5dp"
-                android:id="@+id/colorView"
                 android:background="@color/fabButtonColor" />
 
             <EditText
@@ -104,56 +104,56 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:id="@+id/layoutImage"
+            android:id="@+id/layoutImag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@id/line1">
 
 
-
             <ImageView
                 android:id="@+id/imgNote"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:visibility="gone"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp" />
+                android:layout_marginEnd="10dp"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/imgDelete"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_alignParentEnd="true"
-                android:visibility="gone"
                 android:layout_alignParentTop="true"
-                android:src="@drawable/ic_delete" />
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_delete"
+                android:visibility="gone" />
 
 
         </RelativeLayout>
 
 
         <LinearLayout
+            android:id="@+id/lineWebUrl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/layoutWebUrl"
+            android:layout_margin="10dp"
             android:background="@color/colorPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical"
             android:padding="10dp"
             android:visibility="gone"
-            android:layout_margin="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutImage"
-            android:orientation="vertical">
+            app:layout_constraintTop_toBottomOf="@id/layoutImag">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal">
+
                 <EditText
                     android:id="@+id/etWebLink"
                     android:layout_width="match_parent"
@@ -168,14 +168,14 @@
                     android:textColor="@color/white"
                     android:textColorHint="@color/textHintColor"
                     android:textSize="12sp" />
+
                 <ImageView
                     android:id="@+id/imgUrlDelete"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:visibility="gone"
-                    android:src="@drawable/ic_baseline_cancel_24" />
+                    android:src="@drawable/ic_baseline_cancel_24"
+                    android:visibility="gone" />
             </LinearLayout>
-
 
 
             <LinearLayout
@@ -188,31 +188,51 @@
 
 
                 <Button
+                    android:id="@+id/btnCancel"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:fontFamily="@font/roboto_bold"
                     android:background="@color/colorAccent"
+                    android:fontFamily="@font/roboto_bold"
                     android:text="@string/cancel"
-                    android:textSize="12sp"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:id="@+id/btnCancel"/>
+                    android:textSize="12sp" />
 
                 <Button
+                    android:id="@+id/btnOk"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:fontFamily="@font/roboto_bold"
+                    android:layout_marginStart="5dp"
                     android:background="@color/colorAccent"
+                    android:fontFamily="@font/roboto_bold"
                     android:text="@string/ok"
                     android:textAllCaps="false"
-                    android:textSize="12sp"
-                    android:layout_marginStart="5dp"
                     android:textColor="@color/white"
-                    android:id="@+id/btnOk"/>
+                    android:textSize="12sp" />
 
 
             </LinearLayout>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvWebLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:ellipsize="end"
+            android:visibility="gone"
+            android:fontFamily="@font/roboto_bold"
+            android:padding="10dp"
+            android:textColor="@color/textHintColor"
+            android:textColorHint="@color/textHintColor"
+            android:textSize="12sp"
+            android:autoLink="web"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lineWebUrl" />
 
         <EditText
             android:id="@+id/addNoteDescEditText"
@@ -238,10 +258,10 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
+                android:id="@+id/noteMore"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"
-                android:id="@+id/noteMore"
                 android:src="@drawable/ic_baseline_more_horiz_24"
                 app:tint="@color/white" />
 
