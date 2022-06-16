@@ -26,6 +26,7 @@ import com.muzafferatmaca.notesapp.model.Notes
 import com.muzafferatmaca.notesapp.util.NoteBottomSheetFragment
 import com.muzafferatmaca.notesapp.viewmodel.CreateFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_create.*
+import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 import java.text.SimpleDateFormat
 import java.util.*
@@ -101,6 +102,8 @@ class CreateFragment : Fragment(), EasyPermissions.PermissionCallbacks,EasyPermi
                     webLink,
                     selectedColor
                 )
+
+
             )
         }
 
@@ -207,6 +210,15 @@ class CreateFragment : Fragment(), EasyPermissions.PermissionCallbacks,EasyPermi
                     //delete note
                 }
 
+                else -> {
+                    layoutImage.visibility = View.GONE
+                    imgNote.visibility = View.GONE
+                    layoutWebUrl.visibility = View.GONE
+                    selectedColor = intent.getStringExtra("selectedColor")!!
+                    colorView.setBackgroundColor(Color.parseColor(selectedColor))
+
+                }
+
             }
 
         }
@@ -292,19 +304,18 @@ class CreateFragment : Fragment(), EasyPermissions.PermissionCallbacks,EasyPermi
         EasyPermissions.onRequestPermissionsResult(requestCode,permissions,grantResults,requireActivity())
     }
     override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
-        TODO("Not yet implemented")
     }
 
     override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
-        TODO("Not yet implemented")
+        if (EasyPermissions.somePermissionPermanentlyDenied(requireActivity(),perms)){
+            AppSettingsDialog.Builder(requireActivity()).build().show()
+        }
     }
 
     override fun onRationaleAccepted(requestCode: Int) {
-        TODO("Not yet implemented")
     }
 
     override fun onRationaleDenied(requestCode: Int) {
-        TODO("Not yet implemented")
     }
 
 }

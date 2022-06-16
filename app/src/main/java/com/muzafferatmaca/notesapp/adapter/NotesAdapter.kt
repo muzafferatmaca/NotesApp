@@ -1,7 +1,9 @@
 package com.muzafferatmaca.notesapp.adapter
 
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -9,6 +11,7 @@ import com.muzafferatmaca.notesapp.R
 import com.muzafferatmaca.notesapp.databinding.ItemNoteBinding
 import com.muzafferatmaca.notesapp.model.Notes
 import com.muzafferatmaca.notesapp.viewmodel.CreateFragmentViewModel
+import kotlinx.android.synthetic.main.item_note.view.*
 
 /**
  * Created by Muzaffer Atmaca on 13.06.2022.
@@ -32,12 +35,16 @@ class NotesAdapter(var noteslist: List<Notes>) : RecyclerView.Adapter<NotesAdapt
         holder.itemNoteBinding.notes = noteslist[position]
 
         if (noteslist[position].color != null){
-
             holder.itemNoteBinding.cardView.setCardBackgroundColor(Color.parseColor(noteslist[position].color))
-
         }else{
             holder.itemNoteBinding.cardView.setCardBackgroundColor(Color.parseColor(R.color.black.toString()))
+        }
 
+        if (noteslist[position].imgPath != null){
+            holder.itemView.imgNote.setImageBitmap(BitmapFactory.decodeFile(noteslist[position].imgPath))
+            holder.itemView.imgNote.visibility = View.VISIBLE
+        }else{
+            holder.itemView.imgNote.visibility = View.GONE
         }
 
     }
