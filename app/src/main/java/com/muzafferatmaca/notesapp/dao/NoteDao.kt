@@ -13,6 +13,9 @@ interface NoteDao {
     @Query("SELECT * FROM notes ORDER BY id DESC")
     fun getAllNote(): LiveData<List<Notes>>
 
+    @Query("SELECT * FROM notes WHERE id =:id")
+    fun getSelectNote(id: Int): LiveData<List<Notes>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNote(note: Notes)
 

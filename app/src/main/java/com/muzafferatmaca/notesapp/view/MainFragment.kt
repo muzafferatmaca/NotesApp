@@ -21,13 +21,14 @@ import kotlinx.android.synthetic.main.fragment_create.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
     private lateinit var viewModel: MainFragmentViewModel
-    private var notesAdapter = NotesAdapter(arrayListOf())
+    private var notesAdapter = NotesAdapter()
     var notesList = ArrayList<Notes>()
 
 
@@ -57,6 +58,8 @@ class MainFragment : Fragment() {
             Navigation.findNavController(view).navigate(action)
         }
 
+        notesAdapter.setOnClickListener(onClicked)
+
 
     }
 
@@ -73,16 +76,28 @@ class MainFragment : Fragment() {
         binding.recyclerView.apply {
             layoutManager = StaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL)
             setHasFixedSize(true)
-            adapter = notesAdapter
             observeData()
+            adapter = notesAdapter
+
         }
     }
 
     private fun observeData() {
 
         viewModel.getAllNote().observe(viewLifecycleOwner) {
-            notesAdapter.noteslist = it
+            notesAdapter.noteslist = it as ArrayList<Notes>
+            notesAdapter.setData(it)
             notesAdapter.notifyDataSetChanged()
+        }
+
+    }
+
+    private val onClicked = object : NotesAdapter.OnItemClick{
+        override fun onClicked(notesModel: Notes) {
+
+            val action = MainFragmentDirections.actionMainFragmentToCreateFragment()
+            Navigation.findNavController(view!!).navigate(action)
+
         }
 
     }

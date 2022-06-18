@@ -18,9 +18,10 @@ import kotlinx.android.synthetic.main.item_note.view.imgNote
 /**
  * Created by Muzaffer Atmaca on 13.06.2022.
  */
-class NotesAdapter(var noteslist: List<Notes>) : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
+class NotesAdapter() : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
 
-
+    var listener : OnItemClick? = null
+    var noteslist = ArrayList<Notes>()
 
     class ViewHolder(val itemNoteBinding: ItemNoteBinding) : RecyclerView.ViewHolder(itemNoteBinding.root) {
 
@@ -30,6 +31,16 @@ class NotesAdapter(var noteslist: List<Notes>) : RecyclerView.Adapter<NotesAdapt
         val inflater = LayoutInflater.from(parent.context)
         val view = DataBindingUtil.inflate<ItemNoteBinding>(inflater,R.layout.item_note,parent,false)
         return ViewHolder(view)
+    }
+
+    fun setData(arrNotesList: List<Notes>){
+
+        noteslist = arrNotesList as ArrayList<Notes>
+
+    }
+
+    fun setOnClickListener(listener1 : OnItemClick){
+        listener = listener1
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -56,7 +67,18 @@ class NotesAdapter(var noteslist: List<Notes>) : RecyclerView.Adapter<NotesAdapt
             holder.itemView.webLink.visibility = View.GONE
         }
 
+        holder.itemView.cardView.setOnClickListener {
+            listener!!.onClicked(noteslist[position])
+        }
+
     }
 
     override fun getItemCount(): Int = noteslist.size
+
+    interface OnItemClick{
+
+        fun onClicked(notesModel: Notes)
+
+    }
 }
+
