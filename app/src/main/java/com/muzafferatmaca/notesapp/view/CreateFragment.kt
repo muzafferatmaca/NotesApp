@@ -47,6 +47,8 @@ class CreateFragment : Fragment(), EasyPermissions.PermissionCallbacks,EasyPermi
     private var noteId = -1
     private var READ_STORAGE_PERM = 100
     private var REQUEST_CODE_IMAGE = 200
+    private var isEdit = ""
+
 
 
     private lateinit var binding: FragmentCreateBinding
@@ -66,6 +68,15 @@ class CreateFragment : Fragment(), EasyPermissions.PermissionCallbacks,EasyPermi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        arguments?.let {
+            noteId = CreateFragmentArgs.fromBundle(it).noteId
+            isEdit = CreateFragmentArgs.fromBundle(it).edit
+        }
+
+        if(noteId != -1){
+            viewModel.
+        }
         viewModel = ViewModelProvider(this).get(CreateFragmentViewModel::class.java)
 
         LocalBroadcastManager.getInstance(requireContext()).registerReceiver(
