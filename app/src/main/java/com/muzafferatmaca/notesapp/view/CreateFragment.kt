@@ -74,9 +74,7 @@ class CreateFragment : Fragment(), EasyPermissions.PermissionCallbacks,EasyPermi
             isEdit = CreateFragmentArgs.fromBundle(it).edit
         }
 
-        if(noteId != -1){
-            viewModel.
-        }
+
         viewModel = ViewModelProvider(this).get(CreateFragmentViewModel::class.java)
 
         LocalBroadcastManager.getInstance(requireContext()).registerReceiver(
@@ -125,6 +123,22 @@ class CreateFragment : Fragment(), EasyPermissions.PermissionCallbacks,EasyPermi
             )
         }
 
+    }
+    fun updateNote(){
+
+        if(noteId != null){
+            viewModel.updateNote(
+                Notes(
+                    binding.addNoteDescEditText.text.toString(),
+                    binding.addNoteTitleEditText.text.toString(),
+                    binding.addNoteSubTitleEditText.text.toString(),
+                    currentDate,
+                    selectedImagePath,
+                    webLink,
+                    selectedColor
+                )
+            )
+        }
     }
 
     private fun setDoneImageView() {

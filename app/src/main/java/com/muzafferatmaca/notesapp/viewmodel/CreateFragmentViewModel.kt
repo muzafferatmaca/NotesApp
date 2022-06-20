@@ -31,6 +31,8 @@ class CreateFragmentViewModel(application: Application) : BaseViewModel(applicat
 
     fun getAllNote(): LiveData<List<Notes>> = noteRepository.getNote()
 
-    fun getUpdateNote() : LiveData<List<Notes>> = noteRepository.
+    fun updateNote(existingNotes: Notes) = viewModelScope.launch(Dispatchers.IO){
+        noteRepository.updateNote(existingNotes)
+    }
 
 }
